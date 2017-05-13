@@ -170,8 +170,8 @@ func (s *Consul) getActiveSession(key string) (string, error) {
 // to use in conjunction to CAS calls
 func (s *Consul) Get(key string) (*store.KVPair, error) {
 	options := &api.QueryOptions{
-		AllowStale:        false,
-		RequireConsistent: true,
+		AllowStale:        true,
+		RequireConsistent: false,
 	}
 
 	pair, meta, err := s.client.KV().Get(s.normalize(key), options)
